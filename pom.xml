@@ -38,6 +38,16 @@
 		<developerConnection>scm:git:git@github.com:despegar/spark-test.git</developerConnection>
 		<url>https://github.com/despegar/spark-test.git</url>
 	</scm>
+	<distributionManagement>
+        <repository>
+            <id>internal</id>
+            <url>http://nexus.despegar.it/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://nexus.despegar.it/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.sparkjava</groupId>
