@@ -34,8 +34,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>git@github.com:despegar/khronus-java-client.git</url>
-		<connection>scm:git:git@github.com:despegar/khronus-java-client.git</connection>
+		<connection>scm:git:git://github.com:despegar/spark-test.git</connection>
+		<developerConnection>scm:git:git@github.com:despegar/spark-test.git</developerConnection>
+		<url>https://github.com/despegar/spark-test.git</url>
 	</scm>
 	<dependencies>
 		<dependency>
