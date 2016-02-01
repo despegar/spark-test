@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.despegar</groupId>
+	<artifactId>spark-test</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>spark-test</name>
+	<description>A library that allows the test of Spark Web Framework based applications using HTTP</description>
+	<developers>
+		<developer>
+			<name>Gerardo Rodríguez</name>
+			<email>rodriguezg@despegar.com</email>
+			<organization>Despegar.com</organization>
+			<organizationUrl>http://www.despegar.com</organizationUrl>
+		</developer>
+		<developer>
+			<name>Leandro Yalet</name>
+			<email>lyalet@despegar.com</email>
+			<organization>Despegar.com</organization>
+			<organizationUrl>http://www.despegar.com</organizationUrl>
+		</developer>
+		<developer>
+			<name>Gerardo Rodríguez</name>
+			<email>fernando.wasylyszyn@despegar.com</email>
+			<organization>Despegar.com</organization>
+			<organizationUrl>http://www.despegar.com</organizationUrl>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<url>git@github.com:despegar/khronus-java-client.git</url>
+		<connection>scm:git:git@github.com:despegar/khronus-java-client.git</connection>
+	</scm>
+	<dependencies>
+		<dependency>
+			<groupId>com.sparkjava</groupId>
+			<artifactId>spark-core</artifactId>
+			<version>[2.2,)</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>[4.7, 4.12]</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
