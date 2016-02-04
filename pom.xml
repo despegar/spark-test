@@ -6,6 +6,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>spark-test</name>
 	<description>A library that allows the test of Spark Web Framework based applications using HTTP</description>
+	<url>https://github.com/despegar/spark-test</url>
 	<developers>
 		<developer>
 			<name>Gerardo Rodríguez</name>
