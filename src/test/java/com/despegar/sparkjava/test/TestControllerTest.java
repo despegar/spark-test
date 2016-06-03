@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-import com.despegar.sparkjava.test.TestSparkClient.UrlResponse;
+import com.despegar.sparkjava.test.SparkClient.UrlResponse;
 
 import spark.servlet.SparkApplication;
 
@@ -14,7 +14,6 @@ import spark.servlet.SparkApplication;
  * @author fwasy
  *
  */
-@SparkTest(port = 10000, sparkApplicationClass = TestControllerTest.TestContollerTestSparkApplication.class)
 public class TestControllerTest {
 
 	public static class TestContollerTestSparkApplication implements SparkApplication {
@@ -25,7 +24,7 @@ public class TestControllerTest {
 	}
 	
 	@ClassRule
-	public static TestSparkServer testServer = new TestSparkServer();
+	public static SparkServer testServer = new SparkServer(TestControllerTest.TestContollerTestSparkApplication.class, 4567);
 	
 	@Test
 	public void test() throws Exception {
