@@ -3,7 +3,7 @@
 	<groupId>com.despegar</groupId>
 	<artifactId>spark-test</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<name>spark-test</name>
 	<description>A library that allows the test of Spark Web Framework based applications using HTTP</description>
 	<url>https://github.com/despegar/spark-test</url>
