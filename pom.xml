@@ -37,7 +37,8 @@
 		<connection>scm:git:git://github.com:despegar/spark-test.git</connection>
 		<developerConnection>scm:git:git@github.com:despegar/spark-test.git</developerConnection>
 		<url>https://github.com/despegar/spark-test.git</url>
-	</scm>
+	  <tag>1.1</tag>
+  </scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
