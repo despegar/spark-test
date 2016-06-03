@@ -28,13 +28,13 @@ import org.apache.http.util.EntityUtils;
  * Client for make HTTP requests
  * @author fwasy
  */
-public class TestSparkClient {
+public class SparkClient {
 
     private int port;
 
     private HttpClient httpClient;
 
-    public TestSparkClient(int port) {
+    public SparkClient(int port) {
         this.port = port;
         this.httpClient = HttpClients.custom().setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
     }

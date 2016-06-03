@@ -27,7 +27,6 @@ public class TestController {
  * The test class
  *
  */
-@SparkTest(port = 10000, sparkApplicationClass = TestControllerTest.TestContollerTestSparkApplication.class)
 public class TestControllerTest {
 
 	public static class TestContollerTestSparkApplication implements SparkApplication {
@@ -38,7 +37,7 @@ public class TestControllerTest {
 	}
 
 	@ClassRule
-	public static TestSparkServer testServer = new TestSparkServer();
+	public static TestSparkServer testServer = new TestSparkServer(TestControllerTest.TestContollerTestSparkApplication.class, 4567);
 
 	@Test
 	public void test() throws Exception {
