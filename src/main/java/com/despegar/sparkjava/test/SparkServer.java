@@ -13,9 +13,11 @@ import spark.servlet.SparkApplication;
  * The server for running the test's {@link SparkApplication}
  * @author Fernando Wasylyszyn
  */
-public class SparkServer extends ExternalResource {
+public class SparkServer<T extends SparkApplication> extends ExternalResource {
 
-    private Class<? extends SparkApplication> sparkApplicationClass;
+    private Class<T> sparkApplicationClass;
+    
+    private T sparkApplication;
     
     private int port;
     
@@ -25,7 +27,7 @@ public class SparkServer extends ExternalResource {
      * Constructor. It will use default Spark port ({@link Service#SPARK_DEFAULT_PORT}
      * @param sparkApplicationClass {@link SparkApplication} to use
      */
-    public SparkServer(Class<? extends SparkApplication> sparkApplicationClass) {
+    public SparkServer(Class<T> sparkApplicationClass) {
     	this.sparkApplicationClass = sparkApplicationClass;
     	this.port = Service.SPARK_DEFAULT_PORT;
     }
@@ -35,13 +37,17 @@ public class SparkServer extends ExternalResource {
      * @param sparkApplicationClass {@link SparkApplication} to use
      * @param port port where to run server
      */
-    public SparkServer(Class<? extends SparkApplication> sparkApplicationClass, int port) {
+    public SparkServer(Class<T> sparkApplicationClass, int port) {
     	this.sparkApplicationClass = sparkApplicationClass;
     	this.port = port;
     }
 
     public SparkClient getClient() {
         return this.sparkClient;
+    }
+    
+    public T getApplication() {
+    	return this.sparkApplication;
     }
 
     @Override
@@ -55,7 +61,8 @@ public class SparkServer extends ExternalResource {
     @Override
     protected void before() throws Throwable {
     	Spark.port(this.port);
-    	this.sparkApplicationClass.newInstance().init();
+    	this.sparkApplication = this.sparkApplicationClass.newInstance();
+    	this.sparkApplication.init();
     	this.sparkClient = new SparkClient(this.port);
     }
 

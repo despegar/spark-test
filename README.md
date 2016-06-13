@@ -37,14 +37,15 @@ public class TestControllerTest {
 	}
 
 	@ClassRule
-	public static TestSparkServer testServer = new TestSparkServer(TestControllerTest.TestContollerTestSparkApplication.class, 4567);
+	public static SparkServer<TestContollerTestSparkApplication> testServer = new SparkServer<>(TestControllerTest.TestContollerTestSparkApplication.class, 4567);
 
 	@Test
 	public void test() throws Exception {
 		UrlResponse response = testServer.getClient().doMethod("GET", "/test", null);
 		assertEquals(200, response.status);
 		assertEquals("This works!", response.body);
+		assertNotNull(testServer.getApplication());
 	}
-
+	
 }
 ```
