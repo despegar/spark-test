@@ -7,7 +7,7 @@ This library allows testing [Spark Web Framework](http://sparkjava.com/) based a
 To use with gradle, add to your build.gradle dependencies:
 ```
 dependencies {
-    testCompile "com.despegar:spark-test:1.0"
+    testCompile "com.despegar:spark-test:1.1.1"
 }
 ```
 
