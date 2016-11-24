@@ -4,6 +4,14 @@ This library allows testing [Spark Web Framework](http://sparkjava.com/) based a
 
 ## Getting Started
 
+To use with gradle, add to your build.gradle dependencies:
+```
+dependencies {
+    testCompile "com.despegar:spark-test:1.0"
+}
+```
+
+
 ```java
 /**
  * The class that defines a Spark Web Framework route
