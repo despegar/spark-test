@@ -3,7 +3,7 @@
 	<groupId>com.despegar</groupId>
 	<artifactId>spark-test</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.2</version>
 	<name>spark-test</name>
 	<description>A library that allows the test of Spark Web Framework based applications using HTTP</description>
 	<url>https://github.com/despegar/spark-test</url>
@@ -37,7 +37,7 @@
 		<connection>scm:git:git://github.com:despegar/spark-test.git</connection>
 		<developerConnection>scm:git:git@github.com:despegar/spark-test.git</developerConnection>
 		<url>https://github.com/despegar/spark-test.git</url>
-	  <tag>1.1</tag>
+	  <tag>1.1.2</tag>
   </scm>
 	<distributionManagement>
 		<snapshotRepository>
