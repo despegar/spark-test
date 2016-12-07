@@ -63,6 +63,7 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
     	Spark.port(this.port);
     	this.sparkApplication = this.sparkApplicationClass.newInstance();
     	this.sparkApplication.init();
+    	Spark.awaitInitialization();
     	this.sparkClient = new SparkClient(this.port);
     }
 
