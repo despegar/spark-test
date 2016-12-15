@@ -6,7 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-import com.despegar.sparkjava.test.SparkClient.UrlResponse;
+import com.despegar.http.client.GetMethod;
+import com.despegar.http.client.HttpResponse;
 
 import spark.servlet.SparkApplication;
 
@@ -29,9 +30,12 @@ public class TestControllerTest {
 	
 	@Test
 	public void test() throws Exception {
-		UrlResponse response = testServer.getClient().doMethod("GET", "/test", null);
-		assertEquals(200, response.status);
-		assertEquals("This works!", response.body);
+		SparkClient sparkClient = testServer.getClient();
+		GetMethod get = sparkClient.get("/test");
+		get.addHeader("Test-Header", "test");
+		HttpResponse httpResponse = sparkClient.execute(get);
+		assertEquals(200, httpResponse.code());
+		assertEquals("This works!", new String(httpResponse.body()));
 		assertNotNull(testServer.getApplication());
 	}
 	
