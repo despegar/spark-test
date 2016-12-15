@@ -14,7 +14,7 @@ Add to your **pom.xml** dependencies
 <dependency>
     <groupId>com.despegar</groupId>
     <artifactId>spark-test</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 
@@ -24,7 +24,7 @@ Add to your **build.gradle** dependencies:
 
 ```json
 dependencies {
-    testCompile: "com.despegar:spark-test:1.1.2"
+    testCompile: "com.despegar:spark-test:1.1.3"
 }
 ```
 
@@ -67,11 +67,16 @@ public class TestControllerTest {
 
 	@Test
 	public void test() throws Exception {
-		UrlResponse response = testServer.getClient().doMethod("GET", "/test", null);
-		assertEquals(200, response.status);
-		assertEquals("This works!", response.body);
+    SparkClient sparkClient = testServer.getClient();
+		GetMethod get = sparkClient.get("/test");
+		get.addHeader("Test-Header", "test");
+		HttpResponse httpResponse = sparkClient.execute(get);
+		assertEquals(200, httpResponse.code());
+		assertEquals("This works!", new String(httpResponse.body()));
 		assertNotNull(testServer.getApplication());
 	}
 
 }
 ```
+
+Now [http-java-native-client](https://github.com/despegar/http-java-native-client) is used. The HTTP response body is a **byte[]**. You can parse it as necessary.

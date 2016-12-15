@@ -28,8 +28,7 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
      * @param sparkApplicationClass {@link SparkApplication} to use
      */
     public SparkServer(Class<T> sparkApplicationClass) {
-    	this.sparkApplicationClass = sparkApplicationClass;
-    	this.port = Service.SPARK_DEFAULT_PORT;
+    	this(sparkApplicationClass, Service.SPARK_DEFAULT_PORT);
     }
     
     /**
