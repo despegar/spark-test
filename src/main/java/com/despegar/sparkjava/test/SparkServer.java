@@ -5,6 +5,17 @@ import org.junit.rules.ExternalResource;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
+import com.despegar.http.client.DeleteMethod;
+import com.despegar.http.client.GetMethod;
+import com.despegar.http.client.HttpClient;
+import com.despegar.http.client.HttpClientException;
+import com.despegar.http.client.HttpMethod;
+import com.despegar.http.client.HttpResponse;
+import com.despegar.http.client.OptionsMethod;
+import com.despegar.http.client.PatchMethod;
+import com.despegar.http.client.PostMethod;
+import com.despegar.http.client.PutMethod;
+
 import spark.Service;
 import spark.Spark;
 import spark.servlet.SparkApplication;
@@ -21,7 +32,9 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
     
     private int port;
     
-    private SparkClient sparkClient;
+    private String protocolHostPort;
+    
+    private HttpClient httpClient;
     
     /**
      * Constructor. It will use default Spark port ({@link Service#SPARK_DEFAULT_PORT}
@@ -39,12 +52,10 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
     public SparkServer(Class<T> sparkApplicationClass, int port) {
     	this.sparkApplicationClass = sparkApplicationClass;
     	this.port = port;
+    	this.protocolHostPort = "http://localhost:" + port;
+    	this.httpClient = new HttpClient(1);
     }
 
-    public SparkClient getClient() {
-        return this.sparkClient;
-    }
-    
     public T getApplication() {
     	return this.sparkApplication;
     }
@@ -63,8 +74,35 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
     	this.sparkApplication = this.sparkApplicationClass.newInstance();
     	this.sparkApplication.init();
     	Spark.awaitInitialization();
-    	this.sparkClient = new SparkClient(this.port);
     }
+    
+    public GetMethod get(String path, boolean followRedirect) {
+		return new GetMethod(this.protocolHostPort + path, followRedirect);
+	}
+	
+	public PostMethod post(String path, String body, boolean followRedirect) {
+		return new PostMethod(this.protocolHostPort + path, body, followRedirect);
+	}
+	
+	public PutMethod put(String path, String body, boolean followRedirect) {
+		return new PutMethod(this.protocolHostPort + path, body, followRedirect);
+	}
+	
+	public PatchMethod patch(String path, String body, boolean followRedirect) {
+		return new PatchMethod(this.protocolHostPort + path, body, followRedirect);
+	}
+	
+	public DeleteMethod delete(String path, boolean followRedirect) {
+		return new DeleteMethod(this.protocolHostPort + path, followRedirect);
+	}
+	
+	public OptionsMethod options(String path, boolean followRedirect) {
+		return new OptionsMethod(this.protocolHostPort + path, followRedirect);
+	}
+	
+	public HttpResponse execute(HttpMethod httpMethod) throws HttpClientException {
+		return this.httpClient.execute(httpMethod);
+	}
 
     /* (non-Javadoc)
      * @see org.junit.rules.ExternalResource#after()

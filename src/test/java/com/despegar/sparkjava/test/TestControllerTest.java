@@ -30,10 +30,9 @@ public class TestControllerTest {
 	
 	@Test
 	public void test() throws Exception {
-		SparkClient sparkClient = testServer.getClient();
-		GetMethod get = sparkClient.get("/test");
+		GetMethod get = testServer.get("/test", false);
 		get.addHeader("Test-Header", "test");
-		HttpResponse httpResponse = sparkClient.execute(get);
+		HttpResponse httpResponse = testServer.execute(get);
 		assertEquals(200, httpResponse.code());
 		assertEquals("This works!", new String(httpResponse.body()));
 		assertNotNull(testServer.getApplication());
