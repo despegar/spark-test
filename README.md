@@ -14,7 +14,7 @@ Add to your **pom.xml** dependencies
 <dependency>
     <groupId>com.despegar</groupId>
     <artifactId>spark-test</artifactId>
-    <version>1.1.3</version>
+    <version>1.1.4</version>
 </dependency>
 ```
 
@@ -24,7 +24,7 @@ Add to your **build.gradle** dependencies:
 
 ```json
 dependencies {
-    testCompile: "com.despegar:spark-test:1.1.3"
+    testCompile: "com.despegar:spark-test:1.1.4"
 }
 ```
 
@@ -67,10 +67,10 @@ public class TestControllerTest {
 
 	@Test
 	public void test() throws Exception {
-    SparkClient sparkClient = testServer.getClient();
-		GetMethod get = sparkClient.get("/test");
+		/* The second parameter indicates whether redirects must be followed or not */
+		GetMethod get = testServer.get("/test", false);
 		get.addHeader("Test-Header", "test");
-		HttpResponse httpResponse = sparkClient.execute(get);
+		HttpResponse httpResponse = testServer.execute(get);
 		assertEquals(200, httpResponse.code());
 		assertEquals("This works!", new String(httpResponse.body()));
 		assertNotNull(testServer.getApplication());
