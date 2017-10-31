@@ -109,6 +109,7 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
      */
     @Override
     protected void after() {
+    	this.sparkApplication.destroy();
     	Spark.stop();
     }
     

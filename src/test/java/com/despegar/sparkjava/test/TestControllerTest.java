@@ -21,8 +21,16 @@ public class TestControllerTest {
 	public static class TestContollerTestSparkApplication implements SparkApplication {
 		@Override
 		public void init() {
+			System.out.println("Test application initialized");
 			new TestController();
 		}
+
+		@Override
+		public void destroy() {
+			System.out.println("Test application stopped");
+		}
+		
+		
 	}
 	
 	@ClassRule
