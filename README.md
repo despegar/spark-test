@@ -22,9 +22,9 @@ Add to your **pom.xml** dependencies
 
 Add to your **build.gradle** dependencies:
 
-```json
+```
 dependencies {
-    testCompile: "com.despegar:spark-test:1.1.6"
+    testCompile "com.despegar:spark-test:1.1.6"
 }
 ```
 
