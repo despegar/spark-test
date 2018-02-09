@@ -7,6 +7,7 @@ import org.junit.runners.model.Statement;
 
 import com.despegar.http.client.DeleteMethod;
 import com.despegar.http.client.GetMethod;
+import com.despegar.http.client.HeadMethod;
 import com.despegar.http.client.HttpClient;
 import com.despegar.http.client.HttpClientException;
 import com.despegar.http.client.HttpMethod;
@@ -98,6 +99,10 @@ public class SparkServer<T extends SparkApplication> extends ExternalResource {
 	
 	public OptionsMethod options(String path, boolean followRedirect) {
 		return new OptionsMethod(this.protocolHostPort + path, followRedirect);
+	}
+	
+	public HeadMethod head(String path, boolean followRedirect) {
+		return new HeadMethod(this.protocolHostPort + path, followRedirect);
 	}
 	
 	public HttpResponse execute(HttpMethod httpMethod) throws HttpClientException {
