@@ -37,8 +37,11 @@
 		<connection>scm:git:git://github.com:despegar/spark-test.git</connection>
 		<developerConnection>scm:git:git@github.com:despegar/spark-test.git</developerConnection>
 		<url>https://github.com/despegar/spark-test.git</url>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+  	</scm>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
@@ -64,6 +67,12 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>[4.7, 4.12]</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<profiles>
